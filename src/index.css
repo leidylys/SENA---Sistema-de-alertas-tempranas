@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+@theme {
+  --color-sena-50: #edf9e8;
+  --color-sena-100: #cff0be;
+  --color-sena-150: #aee694;
+  --color-sena-200: #aee694;
+  --color-sena-300: #8ddc6a;
+  --color-sena-400: #6dd246;
+  --color-sena-500: #39A900; /* Verde SENA principal */
+  --color-sena-600: #2d8600;
+  --color-sena-650: #007832; /* Verde SENA oscuro */
+  --color-sena-700: #007832;
+  --color-sena-800: #005a25;
+  --color-sena-900: #003d19;
+
+  --animate-slide-up: slide-up 0.2s ease-out forwards;
+}
+
+@keyframes slide-up {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
