@@ -315,7 +315,7 @@ export default function AdminSection({ authToken, onSuccessSync }: AdminSectionP
             <div className="space-y-1">
               <span className="font-extrabold">Verificación Interactiva de Datos (Edite directamente si lo requiere):</span>
               <p className="text-slate-655 font-normal">
-                Hemos extraído <strong className="text-amber-950 font-black">{parsedRows.length} fila(s) de asignación</strong>. Para garantizar la máxima precisión y corregir cualquier email ausente, puede hacer clic y corregir cualquier campo en la grilla antes de sincronizar con la base de datos Cloud SQL.
+                Hemos extraído <strong className="text-amber-950 font-black">{parsedRows.length} fila(s) de asignación</strong>. Para garantizar la máxima precisión y corregir cualquier email ausente, puede hacer clic y corregir cualquier campo en la grilla antes de sincronizar con la base de datos institucional.
               </p>
             </div>
           </div>
@@ -400,7 +400,7 @@ export default function AdminSection({ authToken, onSuccessSync }: AdminSectionP
               {loading ? (
                 <>
                   <Loader2 className="w-4 h-4 animate-spin" />
-                  <span>Sincronizando con Cloud SQL...</span>
+                  <span>Sincronizando con la Base de Datos...</span>
                 </>
               ) : (
                 <>

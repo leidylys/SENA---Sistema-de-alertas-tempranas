@@ -263,7 +263,7 @@ export default function App() {
 
     setIsSavingNewFicha(true);
     try {
-      // 1. Sync structures to secure Google Cloud SQL backend
+      // 1. Sync structures to secure institutional database backend
       await syncLearnersToDb(
         authToken,
         info.numeroFicha,
@@ -283,7 +283,7 @@ export default function App() {
       setCurrentView('active_dashboard');
     } catch (err: any) {
       console.error(err);
-      alert('No se pudo guardar la ficha en Google Cloud SQL: ' + err.message);
+      alert('No se pudo guardar la ficha en el servidor de base de datos institucional: ' + err.message);
     } finally {
       setIsSavingNewFicha(false);
     }
@@ -339,7 +339,7 @@ export default function App() {
             </p>
             <div className="border-t border-slate-100 w-16 mx-auto my-3"></div>
             <p className="text-xs text-slate-500 max-w-sm mx-auto">
-              Plataforma institucional de retención pedagógica. Inicie sesión de forma segura utilizando sus credenciales institucionales de Google.
+              Plataforma institucional de retención pedagógica. Inicie sesión de forma segura utilizando su correo institucional MiSena o Google.
             </p>
           </div>
 
@@ -357,7 +357,7 @@ export default function App() {
                 <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05" />
                 <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335" />
               </svg>
-              <span>Acceder con mi Cuenta Google</span>
+              <span>Acceder con mi Correo Institucional</span>
             </button>
 
             <div className="flex items-center my-2 text-slate-300">
@@ -380,10 +380,10 @@ export default function App() {
           <div className="flex flex-col items-center justify-center gap-1 text-[10.5px] text-slate-400 font-medium text-center">
             <div className="flex items-center gap-1">
               <ShieldCheck className="w-4 h-4 text-[#39A900]" />
-              <span>Respaldado con Google Cloud SQL (us-east1)</span>
+              <span>Servidor de Base de Datos Institucional Seguro</span>
             </div>
-            <p className="text-[9px] text-slate-350 max-w-xs leading-normal mt-0.5">
-              Utilice el Acceso de Prueba si no desea autenticar con Google o si el navegador bloquea las ventanas emergentes.
+            <p className="text-[9px] text-slate-355 max-w-xs leading-normal mt-0.5">
+              Utilice el Acceso de Prueba si no desea autenticar con correo institucional o si el navegador bloquea las ventanas emergentes.
             </p>
           </div>
 
@@ -476,7 +476,7 @@ export default function App() {
           <div className="flex items-center gap-3">
             <div className="hidden lg:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#39A900]/5 border border-[#39A900]/15 text-xs text-slate-600">
               <Database className="w-3.5 h-3.5 text-[#39A900]" />
-              <span>Conectado a Cloud SQL con <strong className="text-slate-800">{savedFichas.length}</strong> fichas guardadas</span>
+              <span>Base de datos institucional activa • <strong className="text-slate-800">{savedFichas.length}</strong> fichas</span>
             </div>
 
             <button
@@ -548,7 +548,7 @@ export default function App() {
               {isSyncingDb ? (
                 <div className="text-center py-16 bg-white rounded-xl border border-slate-200 space-y-3">
                   <Loader2 className="w-8 h-8 text-[#39A900] animate-spin mx-auto" />
-                  <p className="text-xs text-slate-400 font-semibold">Cargando fichas de la base de datos de Google...</p>
+                  <p className="text-xs text-slate-400 font-semibold">Cargando fichas del servidor de base de datos institucional...</p>
                 </div>
               ) : savedFichas.length === 0 ? (
                 <div className="text-center py-16 bg-white rounded-xl border border-slate-200 p-8 max-w-xl mx-auto space-y-4 shadow-3xs">
@@ -556,10 +556,10 @@ export default function App() {
                     <Database className="w-6 h-6" />
                   </div>
                   <div className="space-y-1">
-                    <h3 className="text-sm font-bold text-slate-800">No se encontraron fichas guardadas</h3>
-                    <p className="text-xs text-slate-400 leading-relaxed">
-                      Aún no tiene grupos asignados o registros en la base de datos de Google Cloud SQL. Suba un archivo Excel para iniciar el mapa de alertas tempranas.
-                    </p>
+                     <h3 className="text-sm font-bold text-slate-800">No se encontraron fichas guardadas</h3>
+                     <p className="text-xs text-slate-400 leading-relaxed">
+                       Aún no tiene grupos asignados o registros en el servidor de base de datos institucional. Suba un archivo Excel para iniciar el mapa de alertas tempranas.
+                     </p>
                   </div>
                   <button
                     onClick={() => setCurrentView('upload_new')}
